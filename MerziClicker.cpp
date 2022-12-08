@@ -114,6 +114,9 @@ int main() {
 		if (mode == 3) {
 			Butterfly();
 		}
+		if (mode < 1 || mode > 3){
+			system("cls");
+		}
 	}
 	timeEndPeriod(1);
 	}
