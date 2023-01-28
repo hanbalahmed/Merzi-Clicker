@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <chrono>
 #include <thread>
+#pragma comment(lib, "winmm.lib")
 
 using namespace std;
 int mode, KV, randomizationdown, randomizationup, randomizationdoubledown, randomizationdoubleup;
@@ -51,6 +52,7 @@ void Mode() {
 
 void Click() {
 	while (1) {
+		Sleep(1);
 		if (GetAsyncKeyState(VK_MBUTTON) & 0x8000) {
 			if (mode == 1) {
 				randomizationdown = (rand() % 40) + 65;
@@ -80,6 +82,7 @@ void Click() {
 
 void Butterfly() {
 	while (1) {
+		Sleep(1);
 		if (GetAsyncKeyState(VK_MBUTTON) & 0x8000) {
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 			randomizationdoubledown = (rand() % 9) + 3;
@@ -104,8 +107,8 @@ void Butterfly() {
 
 
 int main() {
+	timeBeginPeriod(1);
 	while (1) {
-		timeBeginPeriod(1);
 		Menu();
 		Mode();
 		if (mode <= 2) {
